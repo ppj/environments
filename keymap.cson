@@ -1,0 +1,15 @@
+'.workspace .editor:not(.mini)':
+  'ctrl-enter': 'editor:move-line-down'
+  'ctrl-shift-enter': 'editor:move-line-up'
+  'ctrl-alt-down': 'editor:newline-below'
+  'ctrl-alt-up': 'editor:newline-above'
+  'ctrl-up': 'block-travel:move-up'
+  'ctrl-down': 'block-travel:move-down'
+  'ctrl-shift-up': 'block-travel:select-up'
+  'ctrl-shift-down': 'block-travel:select-down'
+
+'atom-workspace atom-text-editor':
+  'ctrl-l': 'editor:lower-case'
+  'ctrl-u': 'editor:upper-case'
+  'ctrl-shift-U': 'editor:title-case'
+  'ctrl-shift-L': 'editor:toggle-case'
