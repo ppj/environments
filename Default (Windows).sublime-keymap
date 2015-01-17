@@ -1,0 +1,26 @@
+[
+  { "keys": ["ctrl+shift+z"], "command": "redo_or_repeat" },
+  { "keys": ["ctrl+y"], "command": "redo" },
+
+  { "keys": ["alt+up"], "command": "scroll_lines", "args": {"amount": 1.0 } },
+  { "keys": ["alt+down"], "command": "scroll_lines", "args": {"amount": -1.0 } },
+
+  { "keys": ["ctrl+alt+down"], "command": "run_macro_file", "args": {"file": "res://Packages/Default/Add Line.sublime-macro"} },
+  { "keys": ["ctrl+alt+up"], "command": "run_macro_file", "args": {"file": "res://Packages/Default/Add Line Before.sublime-macro"} },
+
+  { "keys": ["ctrl+enter"], "command": "swap_line_down" },
+  { "keys": ["ctrl+shift+enter"], "command": "swap_line_up" },
+
+  { "keys": ["ctrl+up"], "command": "move", "args": {"by": "stops", "empty_line": true, "forward": false} },
+  { "keys": ["ctrl+down"], "command": "move", "args": {"by": "stops", "empty_line": true, "forward": true} },
+
+  { "keys": ["ctrl+shift+up"], "command": "move", "args": {"by": "stops", "empty_line": true, "forward": false, "extend": true} },
+  { "keys": ["ctrl+shift+down"], "command": "move", "args": {"by": "stops", "empty_line": true, "forward": true, "extend": true} },
+
+  { "keys": ["ctrl+l"], "command": "lower_case" },
+  { "keys": ["ctrl+u"], "command": "upper_case" },
+  { "keys": ["ctrl+shift+u"], "command": "title_case" },
+
+  { "keys": ["ctrl+w"], "command": "close_file" }
+
+]
