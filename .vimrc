@@ -1,8 +1,7 @@
-set nocompatible                " choose no compatibility with legacy vi
+set nocompatible              " choose no compatibility with legacy vi
 set laststatus=2
 set t_Co=256
-set clipboard=unnamed         " set default register to the system clipboard
-
+set clipboard=unnamedplus     " set default register to the system clipboard
 filetype off                  " required
  
 " set the runtime path to include Vundle and initialize
@@ -58,4 +57,3 @@ set smartcase                   " ... unless they contain at least one capital l
 map <C-n> :NERDTreeToggle<CR>
 " Close vim if only window open is NERDTREE
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
-
