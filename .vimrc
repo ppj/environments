@@ -1,7 +1,15 @@
 set nocompatible              " choose no compatibility with legacy vi
 set laststatus=2
 set t_Co=256
-set clipboard=unnamedplus     " set default register to the system clipboard
+" set clipboard=unnamedplus   " set default register to the system clipboard
+
+" Ctrl-c to copy in + buffer from visual mode
+vnoremap <C-c> "+y
+" Ctrl-v to paste from the + register in cmd mode
+noremap <C-v> "+p
+" Ctrl-v to paste from the + register while editing
+inoremap <C-v> <esc>"+p<CR>i
+
 filetype off                  " required
  
 " set the runtime path to include Vundle and initialize
