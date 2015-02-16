@@ -3,12 +3,17 @@ set laststatus=2
 set t_Co=256
 " set clipboard=unnamedplus   " set default register to the system clipboard
 
+" Ctrl-x to cut in + buffer from visual mode
+vnoremap <C-x> "+x
 " Ctrl-c to copy in + buffer from visual mode
 vnoremap <C-c> "+y
 " Ctrl-v to paste from the + register in cmd mode
 noremap <C-v> "+p
 " Ctrl-v to paste from the + register while editing
 inoremap <C-v> <esc>"+p<CR>i
+" Ctrl-a to select all & copy in + buffer
+noremap  <C-a> :%y+"<CR>
+inoremap <C-a> <esc>:%y+"<CR>i
 
 filetype off                  " required
  
@@ -65,3 +70,4 @@ set smartcase                   " ... unless they contain at least one capital l
 map <C-n> :NERDTreeToggle<CR>
 " Close vim if only window open is NERDTREE
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+
