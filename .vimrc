@@ -1,6 +1,7 @@
 set nocompatible                " choose no compatibility with legacy vi
 set laststatus=2
 set t_Co=256
+set clipboard=unnamed         " set default register to the system clipboard
 
 filetype off                  " required
  
@@ -50,9 +51,6 @@ set hlsearch                    " highlight matches
 set incsearch                   " incremental searching
 set ignorecase                  " searches are case insensitive...
 set smartcase                   " ... unless they contain at least one capital letter
-
-" Enable copying to clipboard using `CTRL + c`
-map <C-c> y:e ~/clipsongzboard<CR>P:w !pbcopy<CR><CR>:bdelete!<CR>
 
 " Show NERDTREE automatically on opening vim
 " autocmd vimenter * NERDTree
