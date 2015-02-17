@@ -1,41 +1,23 @@
 set nocompatible              " choose no compatibility with legacy vi
-set laststatus=2
-set t_Co=256
-" set clipboard=unnamedplus   " set default register to the system clipboard
-
-" Ctrl-x to cut in + buffer from visual mode
-vnoremap <C-x> "+x
-" Ctrl-c to copy in + buffer from visual mode
-vnoremap <C-c> "+y
-" Ctrl-v to paste from the + register in cmd mode
-noremap <C-v> "+p
-" Ctrl-v to paste from the + register while editing
-inoremap <C-v> <esc>"+p<CR>i
-" Ctrl-a to select all & copy in + buffer
-noremap  <C-a> :%y+"<CR>
-inoremap <C-a> <esc>:%y+"<CR>i
-
 filetype off                  " required
- 
+
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
+
 call vundle#begin()
 " alternatively, pass a path where Vundle should install plugins
 " "call vundle#begin('~/some/path/here')
-"  
+
 " let Vundle manage Vundle, required
 Plugin 'gmarik/Vundle.vim'
-"   
+   
 " The following are examples of different formats supported.
-" Keep Plugin commands between vundle#begin/end.
+" MISSING
 
+" Keep Plugin commands between vundle#begin/end.
+Plugin 'vim-scripts/ScrollColors'
 Plugin 'tpope/vim-fugitive.git'
-Plugin 'vim-scripts/ScrollColors'  
 Plugin 'tpope/vim-rails'
-Plugin 'MarcWeber/vim-addon-mw-utils'
-Plugin 'tomtom/tlib_vim'
-Plugin 'garbas/vim-snipmate'
-Plugin 'tomtom/tcomment_vim'
 Plugin 'thoughtbot/vim-rspec'
 Plugin 'scrooloose/nerdtree'
 Plugin 'tpope/vim-bundler'
@@ -44,13 +26,13 @@ Plugin 'bling/vim-airline'
 Plugin 'kien/ctrlp.vim'
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
-
-let g:airline#extensions#tabline#enabled = 1
-
+filetype plugin indent on    " required
 syntax enable
+
 set encoding=utf-8
 set showcmd                     " display incomplete commands
-filetype plugin indent on       " load file type plugins + indentation
+set laststatus=2
+set t_Co=256
  
 "" Whitespace
 set nowrap                      " don't wrap lines
@@ -63,6 +45,27 @@ set hlsearch                    " highlight matches
 set incsearch                   " incremental searching
 set ignorecase                  " searches are case insensitive...
 set smartcase                   " ... unless they contain at least one capital letter
+
+" Ctrl-x to cut in + buffer from visual mode
+vnoremap <C-x> "+x
+" Ctrl-c to copy in + buffer from visual mode
+vnoremap <C-c> "+y
+" Ctrl-v to paste from the + register in cmd mode
+noremap <C-v> "+p
+" Ctrl-v to paste from the + register while editing
+inoremap <C-v> <esc>"+p<CR>i
+" Ctrl-a to select all & copy in + buffer
+noremap  <C-a> :%y+"<CR>
+inoremap <C-a> <esc>:%y+"<CR>i
+" Select text with shift+arrows in insert mode
+set guioptions+=a keymodel=startsel,stopsel 
+
+let mapleader=','
+noremap <silent><leader>n :bn!<CR>
+noremap <silent><leader>p :bp!<CR>
+noremap <silent><leader>k :bd!<CR>
+
+let g:airline#extensions#tabline#enabled=1
 
 " Show NERDTREE automatically on opening vim
 " autocmd vimenter * NERDTree
