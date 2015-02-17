@@ -30,10 +30,12 @@ filetype plugin indent on    " required
 syntax enable
 
 set encoding=utf-8
-set showcmd                     " display incomplete commands
+set showcmd           " display incomplete commands
 set laststatus=2
 set t_Co=256
- 
+set cursorline        " highlight current line
+set number            " show line numbers
+
 "" Whitespace
 set nowrap                      " don't wrap lines
 set tabstop=2 shiftwidth=2      " a tab is two spaces (or set this to 4)
@@ -59,6 +61,14 @@ noremap  <C-a> :%y+"<CR>
 inoremap <C-a> <esc>:%y+"<CR>i
 " Select text with shift+arrows in insert mode
 set guioptions+=a keymodel=startsel,stopsel 
+" Delete trailing white space(s) before saving buffer
+fun! <SID>StripTrailingWhitespaces()
+    let l = line(".")
+    let c = col(".")
+    %s/\s\+$//e
+    call cursor(l, c)
+endfun
+autocmd BufWritePre * :call <SID>StripTrailingWhitespaces()
 
 let mapleader=','
 noremap <silent><leader>n :bn!<CR>
