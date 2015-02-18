@@ -10,7 +10,7 @@ call vundle#begin()
 
 " let Vundle manage Vundle, required
 Plugin 'gmarik/Vundle.vim'
-   
+
 " The following are examples of different formats supported.
 " MISSING
 
@@ -37,11 +37,10 @@ set cursorline        " highlight current line
 set number            " show line numbers
 
 "" Whitespace
-set nowrap                      " don't wrap lines
 set tabstop=2 shiftwidth=2      " a tab is two spaces (or set this to 4)
 set expandtab                   " use spaces, not tabs (optional)
 set backspace=indent,eol,start  " backspace through everything in insert mode
- 
+
 "" Searching
 set hlsearch                    " highlight matches
 set incsearch                   " incremental searching
@@ -60,7 +59,7 @@ inoremap <C-v> <esc>"+p<CR>i
 noremap  <C-a> :%y+"<CR>
 inoremap <C-a> <esc>:%y+"<CR>i
 " Select text with shift+arrows in insert mode
-set guioptions+=a keymodel=startsel,stopsel 
+set guioptions+=a keymodel=startsel,stopsel
 " Delete trailing white space(s) before saving buffer
 fun! <SID>StripTrailingWhitespaces()
     let l = line(".")
@@ -73,7 +72,9 @@ autocmd BufWritePre * :call <SID>StripTrailingWhitespaces()
 let mapleader=','
 noremap <silent><leader>n :bn!<CR>
 noremap <silent><leader>p :bp!<CR>
-noremap <silent><leader>k :bd!<CR>
+noremap <silent><leader>k :bd<CR>
+noremap <silent><leader>kf :bd!<CR>
+noremap <silent><leader>w :w<CR>
 
 let g:airline#extensions#tabline#enabled=1
 
