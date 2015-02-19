@@ -24,8 +24,13 @@ Plugin 'tpope/vim-bundler'
 Plugin 'tpope/vim-haml'
 Plugin 'bling/vim-airline'
 Plugin 'kien/ctrlp.vim'
+" SnipMate Plugin
+Plugin 'MarcWeber/vim-addon-mw-utils'
+Plugin 'tomtom/tlib_vim'
+Plugin 'garbas/vim-snipmate'
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
+
 filetype plugin indent on    " required
 syntax enable
 
@@ -33,8 +38,9 @@ set encoding=utf-8
 set showcmd           " display incomplete commands
 set laststatus=2
 set t_Co=256
-set cursorline        " highlight current line
-set number            " show line numbers
+set cursorline                                      " highlight current line
+hi CursorLine cterm=bold ctermbg=235
+set number                                          " show line numbers
 
 "" Whitespace
 set tabstop=2 shiftwidth=2      " a tab is two spaces (or set this to 4)
