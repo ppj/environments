@@ -1,5 +1,6 @@
 set nocompatible              " choose no compatibility with legacy vi
-filetype off                  " required
+filetype plugin indent on     " required
+syntax enable
 
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
@@ -24,6 +25,9 @@ Plugin 'tpope/vim-bundler'
 Plugin 'tpope/vim-haml'
 Plugin 'bling/vim-airline'
 Plugin 'kien/ctrlp.vim'
+Plugin 'godlygeek/tabular'
+Plugin 'Lokaltog/vim-easymotion'
+Plugin 'plasticboy/vim-markdown'
 " SnipMate Plugin
 Plugin 'MarcWeber/vim-addon-mw-utils'
 Plugin 'tomtom/tlib_vim'
@@ -31,8 +35,28 @@ Plugin 'garbas/vim-snipmate'
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 
-filetype plugin indent on    " required
-syntax enable
+fun! SetupVAM()
+  let c = get(g:, 'vim_addon_manager', {})
+  let g:vim_addon_manager = c
+  let c.plugin_root_dir = expand('$HOME', 1) . '/.vim/vim-addons'
+
+  " Force your ~/.vim/after directory to be last in &rtp always:
+  " let g:vim_addon_manager.rtp_list_hook = 'vam#ForceUsersAfterDirectoriesToBeLast'
+
+  " most used options you may want to use:
+  " let c.log_to_buf = 1
+  " let c.auto_install = 0
+  let &rtp.=(empty(&rtp)?'':',').c.plugin_root_dir.'/vim-addon-manager'
+  if !isdirectory(c.plugin_root_dir.'/vim-addon-manager/autoload')
+    execute '!git clone --depth=1 git://github.com/MarcWeber/vim-addon-manager '
+        \       shellescape(c.plugin_root_dir.'/vim-addon-manager', 1)
+  endif
+
+  " This provides the VAMActivate command, you could be passing plugin names, too
+  call vam#ActivateAddons([], {})
+endfun
+call SetupVAM()
+ActivateAddons vim-snippets snipmate
 
 set encoding=utf-8
 set showcmd           " display incomplete commands
@@ -80,7 +104,6 @@ noremap <silent><leader>n :bn!<CR>
 noremap <silent><leader>p :bp!<CR>
 noremap <silent><leader>k :bd<CR>
 noremap <silent><leader>kf :bd!<CR>
-noremap <silent><leader>w :w<CR>
 
 let g:airline#extensions#tabline#enabled=1
 
