@@ -36,7 +36,6 @@ Plugin 'tomtom/tlib_vim'
 Plugin 'garbas/vim-snipmate'
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
-let g:indentLine_char = '︙'
 let g:indentLine_color_term = 236
 
 fun! SetupVAM()
