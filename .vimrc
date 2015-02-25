@@ -1,6 +1,7 @@
 set nocompatible              " choose no compatibility with legacy vi
 filetype plugin indent on     " required
 syntax enable
+set mouse=a                   " allow mouse to set cursor position
 
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
@@ -28,12 +29,15 @@ Plugin 'kien/ctrlp.vim'
 Plugin 'godlygeek/tabular'
 Plugin 'Lokaltog/vim-easymotion'
 Plugin 'plasticboy/vim-markdown'
+Plugin 'Yggdroot/indentLine'
 " SnipMate Plugin
 Plugin 'MarcWeber/vim-addon-mw-utils'
 Plugin 'tomtom/tlib_vim'
 Plugin 'garbas/vim-snipmate'
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
+let g:indentLine_char = '︙'
+let g:indentLine_color_term = 236
 
 fun! SetupVAM()
   let c = get(g:, 'vim_addon_manager', {})
