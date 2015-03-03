@@ -1,7 +1,11 @@
 set nocompatible              " choose no compatibility with legacy vi
 filetype plugin indent on     " required
 syntax enable
+set hidden                    " manage multiple buffers effectively
 set mouse=a                   " allow mouse to set cursor position
+runtime macros/matchit.vim    " extend % matching to if/elsif/else/end and more
+set wildmenu                  " file/command completion shows options...
+set wildmode=list:longest     " ...only up to the point of ambiguity
 
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
@@ -103,11 +107,14 @@ fun! <SID>StripTrailingWhitespaces()
 endfun
 autocmd BufWritePre * :call <SID>StripTrailingWhitespaces()
 
-let mapleader=','
-noremap <silent><leader>n :bn!<CR>
-noremap <silent><leader>p :bp!<CR>
-noremap <silent><leader>k :Bd<CR>       " close buffer without closing the window
-noremap <silent><leader>kf :bd!<CR>
+nnoremap <SPACE> <Nop>
+let mapleader=" "
+noremap <leader>l :bn!<CR>
+noremap <leader>h :bp!<CR>
+noremap <leader>d :Bd<CR>       " close buffer without closing the window
+noremap <leader>df :Bd!<CR>     " force close buffer without closing the window
+noremap <leader>w :w<CR>        " save buffer
+noremap <leader>q :q<CR>        "
 
 let g:airline#extensions#tabline#enabled=1          " Show buffers as tabs
 " let g:airline#extensions#tabline#fnamemod = ':t'  " Show just the filename
