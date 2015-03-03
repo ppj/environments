@@ -85,19 +85,6 @@ set incsearch                   " incremental searching
 set ignorecase                  " searches are case insensitive...
 set smartcase                   " ... unless they contain at least one capital letter
 
-" Ctrl-x to cut in + buffer from visual mode
-vnoremap <C-x> "+x
-" Ctrl-c to copy in + buffer from visual mode
-vnoremap <C-c> "+y
-" Ctrl-v to paste from the + register in cmd mode
-noremap <C-v> "+p
-" Ctrl-v to paste from the + register while editing
-inoremap <C-v> <esc>"+p<CR>i
-" Ctrl-a to select all & copy in + buffer
-noremap  <C-a> :%y+"<CR>
-inoremap <C-a> <esc>:%y+"<CR>i
-" Select text with shift+arrows in insert mode
-set guioptions+=a keymodel=startsel,stopsel
 " Delete trailing white space(s) before saving buffer
 fun! <SID>StripTrailingWhitespaces()
     let l = line(".")
@@ -107,14 +94,28 @@ fun! <SID>StripTrailingWhitespaces()
 endfun
 autocmd BufWritePre * :call <SID>StripTrailingWhitespaces()
 
-nnoremap <SPACE> <Nop>
+nnoremap <Space> <Nop>
 let mapleader=" "
-noremap <leader>l :bn!<CR>
-noremap <leader>h :bp!<CR>
-noremap <leader>d :Bd<CR>       " close buffer without closing the window
-noremap <leader>df :Bd!<CR>     " force close buffer without closing the window
-noremap <leader>w :w<CR>        " save buffer
-noremap <leader>q :q<CR>        "
+noremap <leader>l :bn<CR>
+noremap <leader>h :bp<CR>
+noremap <leader>d :Bd<CR>
+noremap <leader>df :Bd!<CR>
+noremap <leader>w :w<CR>
+noremap <leader>q :q<CR>
+noremap <leader>o :CtrlP<CR>
+" <leader>-x to cut in + buffer from visual mode
+vnoremap <leader>x "+x
+" <leader>-c to copy in + buffer from visual mode
+vnoremap <leader>c "+y
+" <leader>-v to paste from the + register in cmd mode
+noremap <leader>v "+p
+" Ctrl-v to paste from the + register while editing
+inoremap <C-v> <esc>"+p<CR>i
+" Ctrl-a to select all & copy in + buffer
+noremap  <C-a> :%y+"<CR>
+inoremap <C-a> <esc>:%y+"<CR>i
+" Select text with shift+arrows in insert mode
+set guioptions+=a keymodel=startsel,stopsel
 
 let g:airline#extensions#tabline#enabled=1          " Show buffers as tabs
 " let g:airline#extensions#tabline#fnamemod = ':t'  " Show just the filename
