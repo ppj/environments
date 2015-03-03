@@ -30,6 +30,7 @@ Plugin 'godlygeek/tabular'
 Plugin 'Lokaltog/vim-easymotion'
 Plugin 'plasticboy/vim-markdown'
 Plugin 'Yggdroot/indentLine'
+Plugin 'moll/vim-bbye'            " Close buffer without closing the window using :Bdelete
 " SnipMate Plugin
 Plugin 'MarcWeber/vim-addon-mw-utils'
 Plugin 'tomtom/tlib_vim'
@@ -105,10 +106,11 @@ autocmd BufWritePre * :call <SID>StripTrailingWhitespaces()
 let mapleader=','
 noremap <silent><leader>n :bn!<CR>
 noremap <silent><leader>p :bp!<CR>
-noremap <silent><leader>k :bd<CR>
+noremap <silent><leader>k :Bd<CR>       " close buffer without closing the window
 noremap <silent><leader>kf :bd!<CR>
 
-let g:airline#extensions#tabline#enabled=1
+let g:airline#extensions#tabline#enabled=1          " Show buffers as tabs
+" let g:airline#extensions#tabline#fnamemod = ':t'  " Show just the filename
 
 " Show NERDTREE automatically on opening vim
 " autocmd vimenter * NERDTree
