@@ -35,6 +35,7 @@ Plugin 'Lokaltog/vim-easymotion'
 Plugin 'plasticboy/vim-markdown'
 Plugin 'Yggdroot/indentLine'
 Plugin 'moll/vim-bbye'            " Close buffer without closing the window using :Bdelete
+Plugin 'terryma/vim-expand-region'
 " SnipMate Plugin
 Plugin 'MarcWeber/vim-addon-mw-utils'
 Plugin 'tomtom/tlib_vim'
@@ -119,6 +120,10 @@ set guioptions+=a keymodel=startsel,stopsel
 
 let g:airline#extensions#tabline#enabled=1          " Show buffers as tabs
 " let g:airline#extensions#tabline#fnamemod = ':t'  " Show just the filename
+let g:airline_theme='powerlineish'
+let g:airline_left_sep=''
+let g:airline_right_sep=''
+let g:airline_section_z=''
 
 " Show NERDTREE automatically on opening vim
 " autocmd vimenter * NERDTree
@@ -127,3 +132,11 @@ map <C-n> :NERDTreeToggle<CR>
 " Close vim if only window open is NERDTREE
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 
+" v to expand selection and Shift-v to shrink selection
+vmap v <Plug>(expand_region_expand)
+vmap <S-v> <Plug>(expand_region_shrink)
+
+" Make a simple "search" text object to be able to use ys/cs/gUs/"+ys/vs etc.
+vnoremap <silent> s //e<C-r>=&selection=='exclusive'?'+1':''<CR><CR>
+    \:<C-u>call histdel('search',-1)<Bar>let @/=histget('search',-1)<CR>gv
+omap s :normal vs<CR>
