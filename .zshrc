@@ -5,7 +5,8 @@ export ZSH=$HOME/.oh-my-zsh
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-ZSH_THEME="random"
+# TEST 'e*' and onwards - PPJ
+ZSH_THEME="ys"
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -82,5 +83,20 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+# Prevent the "zsh: no matches found" error running the octopress rake tasks
+# alias rake=noglob rake
 # clear screen AND the scroll-back buffer (equivalent to Windows 'cls' command)
 alias cls='printf "\ec"'
+
+# User Ctrl-z to switch back to Vim
+fancy-ctrl-z () {
+  if [[ $#BUFFER -eq 0 ]]; then
+    BUFFER="fg"
+    zle accept-line
+  else
+    zle push-input
+    zle clear-screen
+  fi
+}
+zle -N fancy-ctrl-z
+bindkey '^Z' fancy-ctrl-z
