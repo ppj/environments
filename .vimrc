@@ -36,6 +36,7 @@ Plugin 'plasticboy/vim-markdown'
 Plugin 'Yggdroot/indentLine'
 Plugin 'moll/vim-bbye'            " Close buffer without closing the window using :Bdelete
 Plugin 'terryma/vim-expand-region'
+Plugin 'mileszs/ack.vim'
 " SnipMate Plugin
 Plugin 'MarcWeber/vim-addon-mw-utils'
 Plugin 'tomtom/tlib_vim'
@@ -117,6 +118,11 @@ noremap  <C-a> :%y+"<CR>
 inoremap <C-a> <esc>:%y+"<CR>i
 " Select text with shift+arrows in insert mode
 set guioptions+=a keymodel=startsel,stopsel
+" RSpec.vim mappings
+map <leader>t :call RunCurrentSpecFile()<CR>
+map <leader>n :call RunNearestSpec()<CR>
+map <leader>p :call RunLastSpec()<CR>
+map <leader>a :call RunAllSpecs()<CR>
 
 let g:airline#extensions#tabline#enabled=1          " Show buffers as tabs
 " let g:airline#extensions#tabline#fnamemod = ':t'  " Show just the filename
