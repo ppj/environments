@@ -142,11 +142,6 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTree
 vmap v <Plug>(expand_region_expand)
 vmap <S-v> <Plug>(expand_region_shrink)
 
-" Make a simple "search" text object to be able to use ys/cs/gUs/"+ys/vs etc.
-vnoremap <silent> s //e<C-r>=&selection=='exclusive'?'+1':''<CR><CR>
-    \:<C-u>call histdel('search',-1)<Bar>let @/=histget('search',-1)<CR>gv
-omap s :normal vs<CR>
-
 " Twiddle Case: '~' to cycle between UPPER, lower & Title cases on visual selection
 function! TwiddleCase(str)
   if a:str ==# toupper(a:str)
