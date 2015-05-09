@@ -21,7 +21,6 @@ Plugin 'gmarik/Vundle.vim'
 " MISSING
 
 " Keep Plugin commands between vundle#begin/end.
-Plugin 'vim-scripts/ScrollColors'
 Plugin 'tpope/vim-fugitive.git'
 Plugin 'tpope/vim-rails'
 Plugin 'thoughtbot/vim-rspec'
@@ -67,6 +66,10 @@ fun! SetupVAM()
 endfun
 call SetupVAM()
 ActivateAddons vim-snippets snipmate
+
+" set colorscheme
+let g:mopkai_is_not_set_normal_ctermbg = 1
+colorscheme mopkai
 
 set encoding=utf-8
 set showcmd           " display incomplete commands
