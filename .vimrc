@@ -6,6 +6,7 @@ set mouse=a                   " allow mouse to set cursor position
 runtime macros/matchit.vim    " extend % matching to if/elsif/else/end and more
 set wildmenu                  " file/command completion shows options...
 set wildmode=list:longest     " ...only up to the point of ambiguity
+set dir=~/.vim_swp            " store swp files in this folder (it needs to exist)
 
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
@@ -23,6 +24,7 @@ Plugin 'gmarik/Vundle.vim'
 " Keep Plugin commands between vundle#begin/end.
 Plugin 'tpope/vim-fugitive.git'
 Plugin 'tpope/vim-rails'
+Plugin 'tpope/vim-surround'
 Plugin 'thoughtbot/vim-rspec'
 Plugin 'scrooloose/nerdtree'
 Plugin 'tpope/vim-bundler'
@@ -40,6 +42,7 @@ Plugin 'mileszs/ack.vim'
 Plugin 'MarcWeber/vim-addon-mw-utils'
 Plugin 'tomtom/tlib_vim'
 Plugin 'garbas/vim-snipmate'
+Plugin 'terryma/vim-multiple-cursors'
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 let g:indentLine_color_term = 236
