@@ -7,6 +7,8 @@ runtime macros/matchit.vim    " extend % matching to if/elsif/else/end and more
 set wildmenu                  " file/command completion shows options...
 set wildmode=list:longest     " ...only up to the point of ambiguity
 set dir=~/.vim_swp            " store swp files in this folder (it needs to exist)
+set splitbelow                " horizontal split with new window below the current window
+set splitright                " vertical split with new window to the right side of current window
 
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
@@ -45,7 +47,7 @@ Plugin 'garbas/vim-snipmate'
 Plugin 'terryma/vim-multiple-cursors'
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
-let g:indentLine_color_term = 236
+let g:indentLine_color_term = 237
 
 fun! SetupVAM()
   let c = get(g:, 'vim_addon_manager', {})
