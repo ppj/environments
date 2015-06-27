@@ -63,10 +63,12 @@ source $ZSH/oh-my-zsh.sh
 
 # Preferred editor for local and remote sessions
 # if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
+export EDITOR='vim'
 # else
 #   export EDITOR='mvim'
 # fi
+export USE_EDITOR=$EDITOR
+export VISUAL=$EDITOR
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
@@ -74,19 +76,8 @@ source $ZSH/oh-my-zsh.sh
 # ssh
 # export SSH_KEY_PATH="~/.ssh/dsa_id"
 
-# Set personal aliases, overriding those provided by oh-my-zsh libs,
-# plugins, and themes. Aliases can be placed here, though oh-my-zsh
-# users are encouraged to define aliases within the ZSH_CUSTOM folder.
-# For a full list of active aliases, run `alias`.
-#
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
-
-# Prevent the "zsh: no matches found" error running the octopress rake tasks
-# alias rake=noglob rake
-# clear screen AND the scroll-back buffer (equivalent to Windows 'cls' command)
-alias cls='printf "\ec"'
+# set aliases
+source .oh-my-zsh/lib/alias.zsh
 
 # User Ctrl-z to switch back to Vim
 fancy-ctrl-z () {
@@ -100,3 +91,6 @@ fancy-ctrl-z () {
 }
 zle -N fancy-ctrl-z
 bindkey '^Z' fancy-ctrl-z
+
+### Added by the Heroku Toolbelt
+export PATH="/usr/local/heroku/bin:$PATH"
