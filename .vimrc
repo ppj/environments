@@ -10,6 +10,10 @@ set dir=~/.vim_swp            " store swp files in this folder (it needs to exis
 set splitbelow                " horizontal split with new window below the current window
 set splitright                " vertical split with new window to the right side of current window
 
+" move screen lines up/down
+nmap k gk
+nmap j gj
+
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 
@@ -88,6 +92,8 @@ set number                                          " show line numbers
 set tabstop=2 shiftwidth=2      " a tab is two spaces (or set this to 4)
 set expandtab                   " use spaces, not tabs (optional)
 set backspace=indent,eol,start  " backspace through everything in insert mode
+set list                        " highlight whitespace etc.
+set listchars=tab:›\ ,trail:•,extends:#,nbsp:. " Highlight problematic whitespace
 
 "" Searching
 set hlsearch                    " highlight matches
@@ -127,6 +133,7 @@ inoremap <C-a> <esc>:%y+"<CR>i
 " Select text with shift+arrows in insert mode
 set guioptions+=a keymodel=startsel,stopsel
 " RSpec.vim mappings
+let g:rspec_command = "!clear && bundle exec rspec {spec}"
 map <leader>t :call RunCurrentSpecFile()<CR>
 map <leader>n :call RunNearestSpec()<CR>
 map <leader>p :call RunLastSpec()<CR>
